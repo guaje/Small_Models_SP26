@@ -1,7 +1,6 @@
 name: small_models_sp26
 channels:
   - conda-forge
-  - pytorch
 dependencies:
   - python=3.10
   - pip
@@ -9,7 +8,7 @@ dependencies:
   - ipykernel
   - numpy
   - pandas
-  - pytorch::pytorch
+  - pytorch
   - huggingface_hub
   - pip:
       - transformers>=4.39
