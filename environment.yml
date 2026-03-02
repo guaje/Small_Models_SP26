@@ -10,12 +10,12 @@ dependencies:
   - numpy
   - pandas
   - pytorch::pytorch
-  - llama-cpp-python
   - huggingface_hub
   - pip:
       - transformers>=4.39
       - openai>=1.0
       - anthropic>=0.8
       - python-dotenv
+      - llama-cpp-python
       - langchain>=0.1
       - sentence-transformers
