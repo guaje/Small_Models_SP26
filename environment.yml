@@ -7,6 +7,7 @@ dependencies:
   - pytorch
   - pip:
       - anthropic
+      - gdown
       - gradio
       - huggingface-hub
       - ipykernel
@@ -18,5 +19,6 @@ dependencies:
       - openai
       - pandas
       - python-dotenv
+      - seaborn
       - sentence-transformers
       - transformers
