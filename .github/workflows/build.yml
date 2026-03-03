@@ -7,19 +7,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout files in repo
+        uses: actions/checkout@main
 
-    - name: Checkout files in repo
-      uses: actions/checkout@main
+      - name: Set lowercase repository name for image
+        id: repo_string
+        uses: ASzc/change-string-case-action@v6
+        with:
+          string: ${{ github.repository }}
 
-    - name: Set lowercase repository name for image
-      run: |
-        echo "REPO_NAME=$(echo ${GITHUB_REPOSITORY} | tr '[:upper:]' '[:lower:]')" >> "${GITHUB_ENV}"
-
-    - name: Update jupyter dependencies with repo2docker
-      uses: jupyterhub/repo2docker-action@master
-      with:
-        DOCKER_USERNAME: ${{ github.actor }}
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_REGISTRY: "ghcr.io"
-        IMAGE_NAME: "${{ env.REPO_NAME }}"
+      - name: Update jupyter dependencies with repo2docker
+        uses: jupyterhub/repo2docker-action@master
+        with:
+          DOCKER_USERNAME: ${{ github.actor }}
+          DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_REGISTRY: "ghcr.io"
+          IMAGE_NAME: "${{ steps.repo_string.outputs.lowercase }}"
