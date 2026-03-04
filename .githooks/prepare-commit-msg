@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+msg_file="${1:?commit message file is required}"
+trailer='Co-authored-by: Codex <julian+codex@julianpistorius.com>'
+
+if ! grep -Fqx "$trailer" "$msg_file"; then
+  printf '\n%s\n' "$trailer" >>"$msg_file"
+fi
