@@ -2,16 +2,16 @@ name: small_models_sp26
 channels:
   - conda-forge
 dependencies:
-  # - python=3.10
-  # - pip
+  - python=3.10
+  - pip
   - pytorch
   - pip:
       - anthropic
       - gdown
       - gradio
       - huggingface-hub
-      # - ipykernel
-      # - jupyterlab
+      - ipykernel
+      - jupyterlab
       - langchain
       - llama-cpp-python
       - matplotlib
