@@ -11,7 +11,8 @@ dependencies:
       - gradio
       - huggingface-hub
       - ipykernel
-      - jupyterlab
+      - jupyterhub
+      # - jupyterlab
       - langchain
       - llama-cpp-python
       - matplotlib

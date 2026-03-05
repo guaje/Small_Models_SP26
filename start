@@ -1,14 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
-# When this image is launched by JupyterHub, run the single-user server.
-if [[ -n "${JUPYTERHUB_API_TOKEN:-}" || -n "${JPY_API_TOKEN:-}" ]]; then
-  # repo2docker defaults to `jupyter notebook ...`; strip that command prefix
-  # and pass through only the effective server flags.
-  if [[ "$#" -ge 2 && "$1" == "jupyter" && ( "$2" == "notebook" || "$2" == "lab" ) ]]; then
-    shift 2
-  fi
-  exec jupyterhub-singleuser "$@"
+# When this image is launched by JupyterHub, run the Hub-aware single-user server
+# so requests under /user/<name>/ are routed correctly.
+if [[ -n "${JUPYTERHUB_API_TOKEN:-}" ]]; then
+  exec jupyterhub-singleuser
 fi
 
 exec "$@"
